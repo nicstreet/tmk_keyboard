@@ -22,7 +22,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
 			FN0 ,MS_L,MS_D,MS_R,WH_D,TRNS,TRNS, \
 			TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-			TRNS,TRNS,TRNS,CALC,TRNS,TRNS,TRNS, \
+			TRNS,FN2,TRNS,CALC,TRNS,TRNS,TRNS, \
 			TRNS,TRNS,TRNS,TRNS,TRNS,VOLU,MUTE, \
 			TRNS,TRNS,TRNS,TRNS,TRNS,BTN1, \
 			BTN2,TRNS,TRNS,TRNS,VOLD,TRNS),
@@ -31,6 +31,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 enum macro_id {
     HELLO,
+	BACKSLASH,
     VOLUP,
     ALT_TAB,
 };
@@ -40,6 +41,7 @@ const uint16_t PROGMEM fn_actions[] = {
     /* Poker Layout */
     [0] = ACTION_LAYER_MOMENTARY(1), 			// FN0 move to Fn'd
 	[1] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),
+	[2] = ACTION_MACRO(BACKSLASH),
 	[30] = ACTION_MACRO(HELLO),					// Add FN31 or FN32 to keymap if needed
 	[31] = ACTION_MODS_KEY(MOD_LCTL + MOD_LSFT, KC_ESC),
 };
@@ -57,6 +59,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case VOLUP:
             return (record->event.pressed ?
                     MACRO( D(VOLU), U(VOLU), END ) :
+                    MACRO_NONE );
+		case BACKSLASH:
+            return (record->event.pressed ?
+                    MACRO( I(0),D(SLSH), END ) :
                     MACRO_NONE );
         case ALT_TAB:
             return (record->event.pressed ?
