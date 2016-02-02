@@ -1,4 +1,5 @@
 #include "keymap_common.h"
+/* Revised 02\02 Split space and backspace. Moved Home and End */
 
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Standard NRS67 Keymap */
@@ -11,8 +12,8 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			J,   K,   L,   SCLN,QUOT,ENT, \
 			LSFT,BSLS,Z,   X,   C,   V,   B, \
 			N,   M,   COMM,DOT, RSFT,UP,  CAPS, \
-			LCTL,LGUI,LALT,PGDN,PGUP,SPC, \
-			SPC, HOME,END,LEFT,DOWN,RGHT),
+			LCTL,LGUI,LALT,PGDN,PGUP,BSPC, \
+			SPC, RCTL,RGUI,LEFT,DOWN,RGHT),
 			
 /* FN0 : NRS67 FN0'd */
     KEYMAP (
